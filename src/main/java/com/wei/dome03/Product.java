@@ -59,11 +59,8 @@ class Data {
         } finally {
             lock.unlock();
         }
-
     }
-class A{
 
-}
     public void decrement() {
         lock.lock();
         try {
