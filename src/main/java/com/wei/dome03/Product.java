@@ -52,7 +52,6 @@ class Data {
         try {
             while (number != 0) {
                 condition.await();
-
             }
             number++;
             System.out.println(Thread.currentThread().getName() + ":" + number);
@@ -62,7 +61,9 @@ class Data {
         }
 
     }
+class A{
 
+}
     public void decrement() {
         lock.lock();
         try {
