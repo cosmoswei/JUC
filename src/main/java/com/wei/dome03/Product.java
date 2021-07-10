@@ -44,7 +44,7 @@ public class Product {
 class Data {
     private int number = 0;
     Lock lock = new ReentrantLock();
-    //精准定位控制唤醒线程
+
     Condition condition = lock.newCondition();
 
     public void increment() throws InterruptedException {
