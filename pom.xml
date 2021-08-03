@@ -28,6 +28,11 @@
             <artifactId>jedis</artifactId>
             <version>3.2.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.76</version>
+        </dependency>
     </dependencies>
 
 </project>

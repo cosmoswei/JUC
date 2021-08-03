@@ -1,5 +1,6 @@
 package com.wei.demo06;
 
+import com.sun.org.apache.xerces.internal.impl.dv.xs.DateDV;
 import lombok.SneakyThrows;
 
 import java.text.ParseException;
@@ -12,10 +13,31 @@ import java.util.concurrent.Executors;
  * @author cosmoswei
  */
 public class ThreadLocalDemo {
-    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+//    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//    public static class ParseDate implements Runnable {
+//
+//        int i = 0;
+//
+//        public ParseDate(int i) {
+//            this.i = i;
+//        }
+//
+//        @Override
+//        public void run() {
+//            try {
+//                Date date = sdf.parse("2021-8-2 19:04: " + i % 60);
+//                System.out.println(i + ":" + date);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
+
+    static ThreadLocal<SimpleDateFormat> tl = new ThreadLocal<SimpleDateFormat>();
 
     public static class ParseDate implements Runnable {
-
         int i = 0;
 
         public ParseDate(int i) {
@@ -25,7 +47,10 @@ public class ThreadLocalDemo {
         @Override
         public void run() {
             try {
-                Date date = sdf.parse("2021-8-2 19:04: " + i % 60);
+                if (tl.get() == null) {
+                    tl.set(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+                }
+                Date date = tl.get().parse("2021-8-3 17:04: " + i % 60);
                 System.out.println(i + ":" + date);
             } catch (ParseException e) {
                 e.printStackTrace();
