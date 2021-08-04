@@ -21,7 +21,7 @@ public class AtomicIntegerTest {
     public static void main(String[] args) throws InterruptedException {
         Thread[] threads = new Thread[10];
         for (int k = 0; k < 10; k++) {
-            threads[k]=new Thread(new AddThread());
+            threads[k] = new Thread(new AddThread());
         }
         for (int k = 0; k < 10; k++) {
             threads[k].start();
